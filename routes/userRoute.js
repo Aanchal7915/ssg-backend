@@ -13,6 +13,14 @@ import getAllUserOrder from "../controllers/user/getAllUserOrder.js";
 import  getCartAndSaveLater  from "../controllers/user/getCartAndSaveLater.js";
 import  updateCartAndSaveLater  from "../controllers/user/updateCartAndSaveLater.js";
 import{addReview} from "../controllers/user/ratingAndReview.js";
+import getMyReviews from "../controllers/user/getRatingAndReview.js";
+//address CRUD operations
+import addAddress from "../controllers/user/addAddress.js";
+import getAddresses from "../controllers/user/getAddress.js";
+import updateAddress from "../controllers/user/updateAddress.js";
+import deleteAddress from "../controllers/user/deleteAddress.js";
+import setDefaultAddress from "../controllers/user/setDefaultAddress.js";
+
 //router object
 const router = express.Router();
 
@@ -54,5 +62,17 @@ router.get("/get-all-order", requireSignIn, getAllUserOrder);
 router.post("/rating-review", requireSignIn, addReview);
 
 //get all reviews of a user
+router.get("/my-reviews", requireSignIn, getMyReviews);
+
+// Add a new address
+router.post("/add-address", requireSignIn, addAddress);
+// Get all addresses of the logged-in user
+router.get("/addresses", requireSignIn, getAddresses);
+// Update an address
+router.put("/update-address/:id", requireSignIn, updateAddress);
+// Delete an address
+router.delete("/delete-address/:id", requireSignIn, deleteAddress);
+// Set an address as default
+router.put("/set-default-address/:id", requireSignIn, setDefaultAddress);
 
 export default router;
