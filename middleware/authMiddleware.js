@@ -53,7 +53,34 @@ const isAdmin = asyncHandler(async (req, res, next) => {
     }
 });
 
-export { requireSignIn, isAdmin };
+const isDeliveryAgent = asyncHandler(async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({ message: "JWT must be provided" });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        // console.log(decoded);
+
+        // Attach user information to the request
+        req.user = await UserModel.findById(decoded._id);
+        // console.log(req.user);
+        if (!req.user || req.user.role !== 2) {
+            return res
+                .status(403)
+                .json({ message: "Access denied. Delivery Agent privileges required." });
+        }
+
+        next();
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Server error" });
+    }
+});
+
+export { requireSignIn, isAdmin, isDeliveryAgent };
 // import JWT from "jsonwebtoken";
 // import userModel from "../models/userModel.js";
 // import asyncHandler from "express-async-handler";

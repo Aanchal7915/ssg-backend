@@ -58,7 +58,11 @@ const userSchema = new mongoose.Schema(
                 quantity: { type: Number, default: 1 },
                 addedAt: { type: Date, default: Date.now },
             },
-        ]
+        ],
+        isActive:{  
+            type:Boolean,
+            default:true
+        }
 
 
     },

@@ -16,7 +16,7 @@ import{addReview} from "../controllers/user/ratingAndReview.js";
 import getMyReviews from "../controllers/user/getRatingAndReview.js";
 //address CRUD operations
 import addAddress from "../controllers/user/addAddress.js";
-import getAddresses from "../controllers/user/getAddress.js";
+import {getAddresses, getDefaultAddress} from "../controllers/user/getAddress.js";
 import updateAddress from "../controllers/user/updateAddress.js";
 import deleteAddress from "../controllers/user/deleteAddress.js";
 import setDefaultAddress from "../controllers/user/setDefaultAddress.js";
@@ -74,5 +74,8 @@ router.put("/update-address/:id", requireSignIn, updateAddress);
 router.delete("/delete-address/:id", requireSignIn, deleteAddress);
 // Set an address as default
 router.put("/set-default-address/:id", requireSignIn, setDefaultAddress);
+
+//get default address of user
+router.get("/default-address/:id", requireSignIn, getDefaultAddress);
 
 export default router;

@@ -43,6 +43,15 @@ const orderSchema = new mongoose.Schema({
         required: true,
     },
     shippingInfo: {
+        name: {
+            type: String,
+        },
+        email: {
+            type: String,
+        },
+        locality: {
+            type: String,
+        },
         address: {
             type: String,
             required: true,
@@ -66,6 +75,9 @@ const orderSchema = new mongoose.Schema({
         phoneNo: {
             type: String,
             required: true,
+        },
+        alternatePhoneNo: {
+            type: String,
         },
         landmark: {
             type: String,

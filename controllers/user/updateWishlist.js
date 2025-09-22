@@ -6,9 +6,11 @@ const updateWishlist = async (req, res) => {
 
         let response;
         if (type === "add") {
-            response = await userModel.findByIdAndUpdate(req.user._id, {
-                $push: { wishlist: productId },
-            });
+            response = await userModel.findByIdAndUpdate(
+                req.user._id,
+                { $addToSet: { wishlist: productId } }, // prevents duplicates
+                { new: true }
+            );
         } else if (type === "remove") {
             response = await userModel.findByIdAndUpdate(
                 req.user._id,
@@ -16,7 +18,7 @@ const updateWishlist = async (req, res) => {
                 { new: true }
             );
         }
-        // console.log(type, response);
+
         const wishlistItems = response.wishlist;
         res.status(201).send({
             success: true,
@@ -31,4 +33,5 @@ const updateWishlist = async (req, res) => {
         });
     }
 };
+
 export default updateWishlist;

@@ -5,7 +5,7 @@ import { userCheckController } from "../controllers/auth/userExist.js";
 import { forgotPasswordController } from "../controllers/auth/forgotPassword.js";
 import { updateDetailsController } from "../controllers/auth/updateDetails.js";
 import { deactivateController } from "../controllers/auth/deactivateAccount.js";
-import { isAdmin, requireSignIn } from "../middleware/authMiddleware.js";
+import { isAdmin, isDeliveryAgent ,requireSignIn } from "../middleware/authMiddleware.js";
 
 //router object
 const router = express.Router();
@@ -36,6 +36,13 @@ router.get("/user-auth", requireSignIn, (req, res) => {
 
 //protected Admin route
 router.get("/admin-auth", isAdmin, (req, res) => {
+    res.status(200).send({
+        ok: true,
+    });
+});
+
+//protected Delivery-Agent route
+router.get("/delivery-agent-auth", isDeliveryAgent, (req, res) => {
     res.status(200).send({
         ok: true,
     });

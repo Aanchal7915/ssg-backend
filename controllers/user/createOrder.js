@@ -63,6 +63,7 @@
 
 
 import dotenv from "dotenv";
+import Address from "../../models/addressModel.js";
 import razorpayInstance from "../../config/payment.js";
 import userModel from "../../models/userModel.js";
 dotenv.config();
@@ -81,6 +82,12 @@ const createOrder = async (req, res) => {
     const user = await userModel.findById(userId);
     if (!user) {
       return res.status(404).send({ success: false, message: "User not found" });
+    }
+
+    const defaultAddress = await Address.findOne({ customer: userId, isDefault: true });
+ 
+    if (!defaultAddress) {
+      return res.status(400).send({ success: false, message: "No default address found for user" });
     }
 
     // Calculate total amount (in paise)
