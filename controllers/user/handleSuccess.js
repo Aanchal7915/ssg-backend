@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import productModel from "../../models/productModel.js";
 import razorpayInstance from "../../config/payment.js";
 import Address from "../../models/addressModel.js";
+import sendInvoiceEmail from "../../utils/sendInvoiceMail.js";
 dotenv.config();
 
 
@@ -88,6 +89,8 @@ const handleSuccess = async (req, res) => {
         throw new Error(`Product with ID ${item.productId} not found`);
       }
     }
+    // Send invoice email with PDF
+    await sendInvoiceEmail(order, req.user.email);
 
     return res.status(200).send({ success: true, orderId: order._id });
   } catch (error) {

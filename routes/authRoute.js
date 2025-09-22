@@ -6,7 +6,7 @@ import { forgotPasswordController } from "../controllers/auth/forgotPassword.js"
 import { updateDetailsController } from "../controllers/auth/updateDetails.js";
 import { deactivateController } from "../controllers/auth/deactivateAccount.js";
 import { isAdmin, isDeliveryAgent ,requireSignIn } from "../middleware/authMiddleware.js";
-
+import sendOtp from "../controllers/auth/sendOtp.js";
 //router object
 const router = express.Router();
 
@@ -16,6 +16,9 @@ router.post("/register", registerController);
 
 //LOGIN || METHOD POST
 router.post("/login", loginController);
+
+//send-otp
+router.post("/send-otp", sendOtp);
 
 //USER EXIST || METHOD POST
 router.post("/user-exist", userCheckController);

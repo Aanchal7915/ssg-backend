@@ -20,6 +20,7 @@ import {getAddresses, getDefaultAddress} from "../controllers/user/getAddress.js
 import updateAddress from "../controllers/user/updateAddress.js";
 import deleteAddress from "../controllers/user/deleteAddress.js";
 import setDefaultAddress from "../controllers/user/setDefaultAddress.js";
+import clearCartItem from "../controllers/user/clearCartItems.js";
 
 //router object
 const router = express.Router();
@@ -28,7 +29,10 @@ const router = express.Router();
 //get Cart and Save for later items
 router.get("/cart-and-save-later", requireSignIn, getCartAndSaveLater);
 
-//update Cart and Save for later items
+//clear cart items
+router.post("/clear-cart", requireSignIn, clearCartItem);
+
+///update Cart and Save for later items
 router.post("/update-cart-and-save-later", requireSignIn, updateCartAndSaveLater);
 
 //get Wishlist Items id

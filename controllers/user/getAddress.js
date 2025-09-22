@@ -2,8 +2,8 @@ import Address from "../../models/addressModel.js";
 // Get all addresses of a customer
 const getAddresses = async (req, res) => {
   try {
-    const { customerId } = req.params;
-    const addresses = await Address.find({ customerId });
+    const customer = req.user._id;
+    const addresses = await Address.find({ customer });
     res.json(addresses);
   } catch (err) {
     res.status(400).json({ error: err.message });
