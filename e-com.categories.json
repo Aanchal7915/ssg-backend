@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "68d32a5528bd1c6bc2577be5"
+  },
+  "name": "Electronics"
+},
+{
+  "_id": {
+    "$oid": "68d32a5528bd1c6bc2577be6"
+  },
+  "name": "Mobiles & Accessories"
+},
+{
+  "_id": {
+    "$oid": "68d32a5528bd1c6bc2577be7"
+  },
+  "name": "Jewellery"
+},
+{
+  "_id": {
+    "$oid": "68d32a5528bd1c6bc2577be8"
+  },
+  "name": "Clothing"
+}]

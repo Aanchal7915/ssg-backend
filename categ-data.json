@@ -1,0 +1,25 @@
+[
+  { "name": "Laptops & Computers", "category": "68d32a5528bd1c6bc2577be5" },
+  { "name": "Home Appliances (Refrigerator, Washing Machine, Microwave, etc.)", "category": "68d32a5528bd1c6bc2577be5" },
+  { "name": "Kitchen Appliances (Mixer, Juicer, Induction, etc.)", "category": "68d32a5528bd1c6bc2577be5" },
+  { "name": "Audio & Accessories (Headphones, Speakers, Earbuds)", "category": "68d32a5528bd1c6bc2577be5" },
+  { "name": "Smart Gadgets (Smartwatches, Fitness Bands, Smart Home Devices)", "category": "68d32a5528bd1c6bc2577be5" },
+
+  { "name": "Smartphones", "category": "68d32a5528bd1c6bc2577be6" },
+  { "name": "Feature Phones", "category": "68d32a5528bd1c6bc2577be6" },
+  { "name": "Mobile Covers & Cases", "category": "68d32a5528bd1c6bc2577be6" },
+  { "name": "Chargers & Power Banks", "category": "68d32a5528bd1c6bc2577be6" },
+  { "name": "Earphones & Bluetooth Devices", "category": "68d32a5528bd1c6bc2577be6" },
+
+  { "name": "Gold Jewellery", "category": "68d32a5528bd1c6bc2577be7" },
+  { "name": "Silver Jewellery", "category": "68d32a5528bd1c6bc2577be7" },
+  { "name": "Imitation/Artificial Jewellery", "category": "68d32a5528bd1c6bc2577be7" },
+  { "name": "Fashion Jewellery Sets", "category": "68d32a5528bd1c6bc2577be7" },
+  { "name": "Watches & Accessories", "category": "68d32a5528bd1c6bc2577be7" },
+
+  { "name": "Men’s Wear (Shirts, T-Shirts, Jeans, Ethnic Wear)", "category": "68d32a5528bd1c6bc2577be8" },
+  { "name": "Women’s Wear (Sarees, Suits, Tops, Kurtis, Western Wear)", "category": "68d32a5528bd1c6bc2577be8" },
+  { "name": "Kids’ Wear (Boys, Girls, Infants)", "category": "68d32a5528bd1c6bc2577be8" },
+  { "name": "Footwear (Casual, Formal, Sports, Ethnic)", "category": "68d32a5528bd1c6bc2577be8" },
+  { "name": "Accessories (Bags, Belts, Caps, Scarves)", "category": "68d32a5528bd1c6bc2577be8" }
+]

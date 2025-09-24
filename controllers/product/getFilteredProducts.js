@@ -3,12 +3,19 @@ import productModel from "../../models/productModel.js";
 const getFilteredProducts = async (req, res) => {
     try {
         // Extract parameters from the request query
-        const { category, priceRange, ratings } = req.query;
+        const { category, subcategory, priceRange, ratings } = req.query;
 
-        let products = await productModel.find({}).sort({ createdAt: -1 });
+        let products = await productModel.find({}).sort({ createdAt: -1 }).populate("category").populate("subcategory");
+        
         if (category) {
             products = products.filter(
-                (product) => product.category === category
+                (product) => product.category?._id?.toString() === category
+            );
+        }
+
+        if (subcategory) {
+            products = products.filter(
+                (product) => product.subcategory?._id?.toString() === subcategory
             );
         }
 

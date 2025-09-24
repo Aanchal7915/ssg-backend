@@ -82,6 +82,7 @@ const updateProduct = async (req, res) => {
         product.discountPrice = req.body.discountPrice || product.discountPrice;
         product.ratings = req.body.ratings || product.ratings;
         product.highlights = req.body.highlights || product.highlights;
+        product.subcategory= req.body.subcategory || product.subcategory;
 
         // Update specifications
         if (Array.isArray(req.body.specifications)) {

@@ -7,9 +7,18 @@ import findProduct from "../controllers/product/findProduct.js";
 import updateProduct from "../controllers/product/updateProduct.js";
 import getFilteredProducts from "../controllers/product/getFilteredProducts.js";
 import searchProductController from "../controllers/product/searchProductController.js";
+import {getCategories} from "../controllers/product/category.js";
+import {getSubCategories} from "../controllers/product/subcategory.js";
 
 //router object
 const router = express.Router();
+
+//get category
+router.get("/get-category", getCategories)
+
+//get sub-catgegory
+router.get("/get-subcategory/:categoryId", getSubCategories)
+
 
 //Add new product POST
 router.post("/new-product", isAdmin, newProduct);

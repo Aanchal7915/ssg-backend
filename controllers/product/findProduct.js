@@ -4,7 +4,7 @@ const findProduct = async (req, res) => {
     try {
         const productId = req.params.id;
 
-        const response = await productModel.findById(productId);
+        const response = await productModel.findById(productId).populate("category").populate("subcategory");
         // if no response -? product don't exist
         !response &&
             res.status(401).send({

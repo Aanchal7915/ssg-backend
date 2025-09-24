@@ -65,8 +65,13 @@ const productSchema = new mongoose.Schema({
         },
     },
     category: {
-        type: String,
-        required: [true, "Please enter product category"],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true
+    },
+    subcategory: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "SubCategory"
     },
     stock: {
         type: Number,
@@ -88,8 +93,8 @@ const productSchema = new mongoose.Schema({
     },
     ratigAndReviews: [
         {
-           type: mongoose.Schema.ObjectId,
-           ref: "RatingAndReview",
+            type: mongoose.Schema.ObjectId,
+            ref: "RatingAndReview",
         },
     ],
     seller: {
