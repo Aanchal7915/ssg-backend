@@ -8,7 +8,7 @@ import updateProduct from "../controllers/product/updateProduct.js";
 import getFilteredProducts from "../controllers/product/getFilteredProducts.js";
 import searchProductController from "../controllers/product/searchProductController.js";
 import {getCategories} from "../controllers/product/category.js";
-import {getSubCategories} from "../controllers/product/subcategory.js";
+import {getSubCategories} from "../controllers/product/subCategory.js";
 
 //router object
 const router = express.Router();

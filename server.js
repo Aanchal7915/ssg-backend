@@ -9,8 +9,7 @@ import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
-import Category from "./models/categoryModel.js";
-import SubCategory from "./models/subCategoryModel.js";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
