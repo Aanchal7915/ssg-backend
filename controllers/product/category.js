@@ -25,6 +25,7 @@ export const getCategories = async (req, res) => {
     );
     res.status(200).json({ success: true, categories: categoriesWithSubs });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
