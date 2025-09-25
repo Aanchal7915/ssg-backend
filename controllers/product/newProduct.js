@@ -69,6 +69,7 @@
 import productModel from "../../models/productModel.js";
 import Category from "../../models/categoryModel.js"; // import Category model
 import cloudinary from "cloudinary";
+import SubCategory from "../../models/subCategoryModel.js";
 
 const newProduct = async (req, res) => {
     try {
@@ -125,7 +126,7 @@ const newProduct = async (req, res) => {
             });
         }
 
-        const subCategoryExists = categoryExists.subcategories.id(req.body.subCategory);
+        const subCategoryExists = await SubCategory.findById(req.body.subcategory);
         if (!subCategoryExists) {
             return res.status(400).send({
                 success: false,
@@ -134,7 +135,7 @@ const newProduct = async (req, res) => {
         }
 
         req.body.category = categoryExists._id;
-        req.body.subCategory = subCategoryExists._id;
+        req.body.subcategory = subCategoryExists._id;
 
         // Create product
         const product = await productModel.create(req.body);
