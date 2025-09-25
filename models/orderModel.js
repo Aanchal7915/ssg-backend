@@ -97,6 +97,19 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    trackLink: {
+        type: String,
+    },
+    cancelRequest: {
+        type: Boolean,
+        default: false,
+    },
+    cancelReason: {
+        type: String,
+    },
+    canceledAt: {
+        type: Date,
+    }
 });
 
 export default mongoose.model("Orders", orderSchema);
