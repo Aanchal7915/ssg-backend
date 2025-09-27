@@ -1,26 +1,28 @@
-import mongoose from "mongoose";
+// controllers/reviewController.js
 import RatingAndReview from "../../models/ratingAndReviewModel.js";
-import Product from "../../models/productModel.js";
-import User from "../../models/userModel.js";
-import Orders from "../../models/orderModel.js";
 
-// Get all reviews for a product
-const getProductReviews = async (req, res) => {
-    try {
-        const { productId } = req.params;
+export const getProductReviews = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+    const skip = (page - 1) * limit;
 
-        const reviews = await RatingAndReview.find({ product: productId }).populate("user", "name email");
+    const reviews = await RatingAndReview.find({ product: productId })
+      .populate("user", "name email")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
-        res.status(200).send({
-            success: true,
-            reviews,
-        });
-    } catch (error) {
-        console.error("Error fetching reviews:", error);
-        res.status(500).send({
-            success: false,
-            message: "Failed to fetch reviews",
-            error,
-        });
-    }
+    const total = await RatingAndReview.countDocuments({ product: productId });
+
+    res.status(200).json({
+      success: true,
+      reviews,
+      total,
+      hasMore: skip + reviews.length < total,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 };

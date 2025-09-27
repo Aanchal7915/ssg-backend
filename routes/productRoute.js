@@ -9,9 +9,14 @@ import getFilteredProducts from "../controllers/product/getFilteredProducts.js";
 import searchProductController from "../controllers/product/searchProductController.js";
 import {createCategory, getCategories, deleteCategory} from "../controllers/product/category.js";
 import {getSubCategories, createSubCategory, deleteSubCategory} from "../controllers/product/subCategory.js";
+import { getProductReviews } from "../controllers/product/getRatingAndReviews.js";
 
 //router object
 const router = express.Router();
+
+//get rating reviews
+router.get("/reviews/:productId", getProductReviews);
+
 //add category
 router.post("/add-category", isAdmin, createCategory);
 
