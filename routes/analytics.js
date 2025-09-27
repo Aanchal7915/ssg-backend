@@ -1,9 +1,9 @@
 import express from "express";
-import { getAdvancedAnalytics } from "../controllers/product/analytics.js";
+import { getAdvancedAnalytics, getDashboardAnalytics  } from "../controllers/product/analytics.js";
 
 const router = express.Router();
 
-// GET /api/analytics
-router.get("/", getAdvancedAnalytics);
+router.get("/", getDashboardAnalytics);
+router.get("/advanced", getAdvancedAnalytics);
 
 export default router;
