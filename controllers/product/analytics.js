@@ -35,18 +35,73 @@ export const getDashboardAnalytics = async (req, res) => {
       { $group: { _id: "$orderStatus", count: { $sum: 1 } } },
     ]);
 
-    // Top selling products
+    // // Top selling products
+    // const topProducts = await Orders.aggregate([
+    //   { $unwind: "$products" },
+    //   {
+    //     $group: {
+    //       _id: "$products.productId",
+    //       quantitySold: { $sum: "$products.quantity" },
+    //     },
+    //   },
+    //   { $sort: { quantitySold: -1 } },
+    //   { $limit: 5 },
+    // ]);
+
+
     const topProducts = await Orders.aggregate([
       { $unwind: "$products" },
+
+      // Convert products.productId from string to ObjectId to enable lookup
+      {
+        $addFields: {
+          "products.productId": {
+            $toObjectId: "$products.productId"
+          }
+        }
+      },
+
+      // Group by productId and sum quantity sold
       {
         $group: {
           _id: "$products.productId",
           quantitySold: { $sum: "$products.quantity" },
         },
       },
+
+      // Sort descending by quantitySold
       { $sort: { quantitySold: -1 } },
+
+      // Limit to top 5
       { $limit: 5 },
+
+      // Join with products collection to get product details
+      {
+        $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "_id",
+          as: "productDetails",
+        },
+      },
+
+      // Flatten the productDetails array
+      { $unwind: "$productDetails" },
+
+      // Project fields to return
+      {
+        $project: {
+          _id: 1,
+          quantitySold: 1,
+          "productDetails.name": 1,
+          "productDetails.price": 1,
+          "productDetails.discountPrice": 1,
+          "productDetails.brand.name": 1,
+          "productDetails.images": 1,
+        },
+      },
     ]);
+
 
     // Average rating per product
     const ratings = await RatingAndReview.aggregate([
