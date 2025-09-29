@@ -30,13 +30,21 @@ const sendEmail = async ({ to, subject, html, attachments = [] }) => {
 
     await transporter.sendMail(mailOptions);
   } else {
+    // if(attachments.length>0){
+    //   attachments = attachments.map(att => ({
+    //     content: att.content.toString('base64'),
+    //     filename: att.filename,
+    //     type: att.contentType || 'application/octet-stream',
+    //     disposition: 'attachment'
+    //   }));
+    // }
     const msg = {
       to,
       from: process.env.EMAIL_USER, // your SendGrid verified sender email
       subject,
       text: "text",
-      html,
-      attachments
+      html
+      // attachments
     };
     await sgMail.send(msg);
   }

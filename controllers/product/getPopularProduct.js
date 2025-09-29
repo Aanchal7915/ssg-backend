@@ -26,7 +26,7 @@ export const getPopularProducts = async (req, res) => {
         );
 
         // Step 2: Get full product details for these IDs
-        const products = await Product.find({ _id: { $in: productIds } })
+        const products = await Product.find({ _id: { $in: productIds } }).limit(10)
             .populate("category", "name")
             .populate("subcategory", "name")
             .populate("seller", "name")

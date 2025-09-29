@@ -35,7 +35,8 @@ const sendInvoiceEmail = async (order, userEmail) => {
     });
 
     // Generate PDF
-    const pdfBuffer = await generateInvoicePDF(order);
+    const pdfBuffer = "xyz";//await generateInvoicePDF(order);
+    
 
     await sendMail({
         from: `"SSg Orders" <${process.env.SMTP_USER}>`,

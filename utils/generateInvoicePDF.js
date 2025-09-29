@@ -24,7 +24,7 @@ const generateInvoicePDF = async (order) => {
   page.drawText("Items:", { x: 50, y, size: 14, font });
 
   y -= 20;
-  order.products.forEach((item) => {
+  order?.products?.forEach((item) => {
     page.drawText(`${item.name} x${item.quantity} - Rs.${(item.price -item.discountPrice)* item.quantity}`, { x: 60, y, size: 12, font });
     y -= 20;
   });
