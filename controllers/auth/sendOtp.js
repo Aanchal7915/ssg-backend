@@ -27,7 +27,7 @@ const sendOtp = async (req, res) => {
 
     // Send OTP mail
     const template=otpMailTemplate(otp);
-    console.log(template, email);
+   
     await sendMail({
       from: `"SSG" <${process.env.EMAIL_USER}>`,
       to: email,

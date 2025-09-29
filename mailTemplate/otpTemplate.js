@@ -5,7 +5,7 @@ const otpMailTemplate = (OTP_CODE) => {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSg OTP Verification</title>
+<title>SSG OTP Verification</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
     body {

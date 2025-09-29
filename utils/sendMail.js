@@ -11,9 +11,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+console.log("host:"+process.env.EMAIL_HOST+" user:"+process.env.EMAIL_USER+ " pass:",process.env.EMAIL_PASS);
 
 const sendOtpEmail = async ({to, subject,  html, attachments=[]}) => {
-  console.log("from",to, subject, html);
 
 
   const mailOptions = {
