@@ -1,14 +1,23 @@
 import Otp from "../../models/otpModel.js";
 import sendMail from "../../utils/sendMail.js";
 import otpMailTemplate from '../../mailTemplate/otpTemplate.js';
+import userModel from "../../models/userModel.js";
 
 const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 // Send OTP
 const sendOtp = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, type=2 } = req.body;
     if (!email) return res.status(400).json({ message: "Email is required" });
+
+    if(type && type==2){
+      // Check if user exists
+      const existingUser = await userModel.findOne({ email });
+      if (!existingUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+    }
 
     const otp = generateOtp();
 
@@ -18,6 +27,7 @@ const sendOtp = async (req, res) => {
 
     // Send OTP mail
     const template=otpMailTemplate(otp);
+    console.log(template, email);
     await sendMail({
       from: `"SSG" <${process.env.EMAIL_USER}>`,
       to: email,

@@ -84,7 +84,7 @@ const otpMailTemplate = (OTP_CODE) => {
     <div class="content">
         <h1>One-Time Password (OTP) Verification</h1>
         <p>Hi there,</p>
-        <p>Use the following OTP to complete your login or transaction on <strong>SSg</strong>. This OTP is valid for 10 minutes.</p>
+        <p>Use the following OTP to complete your transaction on <strong>SSg</strong>. This OTP is valid for 10 minutes.</p>
         <div class="otp">${OTP_CODE}</div>
         <p>If you did not request this, please ignore this email.</p>
         <p>Thank you for choosing <strong>SSG</strong>!</p>
