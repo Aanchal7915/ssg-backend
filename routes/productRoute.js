@@ -14,6 +14,10 @@ import { getProductReviews } from "../controllers/product/getRatingAndReviews.js
 //router object
 const router = express.Router();
 
+//get popular products
+import { getPopularProducts } from "../controllers/product/getPopularProduct.js"
+router.get("/popular-products", getPopularProducts);
+
 //get rating reviews
 router.get("/reviews/:productId", getProductReviews);
 
